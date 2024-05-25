@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('body');
-            // $table->text('img');
-            $table->foreignId('user_id')->constrained();
+            $table->string('title', 30)->nullable();
+            $table->string('contents', 140)->nullable();
+            $table->text('image_at')->nullable();
+            $table->foreignId('user_id')->constrained()->nullable();
             $table->timestamps();
         });
     }
