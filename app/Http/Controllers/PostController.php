@@ -19,15 +19,28 @@ class PostController extends Controller
         return view('posts.create');
     }
 
+    
     function store(Request $request)
     {
-         $post = new Post;
-         $post -> title = $request->title;
-         $post -> contents = $request->body;
-         $post -> image_at = $request->image;
-         $post -> user_id = Auth::id();
 
-         $post -> save();
-         return redirect()->route('posts.index');
+        $request->validate([
+            'title' => 'required|string|max:30',    // 'title' フィールドは必須で、文字列かつ最大30文字
+            'body' => 'required|string|max:140',    // 'body' フィールドは必須で、文字列かつ最大140文字
+        ], [
+            'title.required' => 'タスク名を入力してください。',         // 'title' フィールドが入力されていない場合に表示するエラーメッセージ
+            'title.max' => 'タスク名は30文字以内にしてください。',   // 'title' フィールドが30文字を超えている場合に表示するエラーメッセージ
+            'body.required' => 'タスク内容を入力してください。',         // 'body' フィールドが入力されていない場合に表示するエラーメッセージ
+            'body.max' => 'タスク内容は140文字以内にしてください。'   // 'body' フィールドが140文字を超えている場合に表示するエラーメッセージ
+        ]);
+
+
+        $post = new Post;
+        $post->title = $request->title;
+        $post->contents = $request->body;
+        $post->image_at = $request->image;
+        $post->user_id = Auth::id();
+
+        $post->save();
+        return redirect()->route('posts.index');
     }
 }

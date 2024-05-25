@@ -26,9 +26,16 @@
                     @csrf
                     <span>タスク名</span>
                     <input type="text" name="title">
+                        @error('title')
+                        <div class="error">{{ $message }}</div>
+                        @enderror
+            
                     <br>
                     <span>タスク内容</span>
                     <input type="textarea" name="body">
+                        @error('body')
+                        <div class="error">{{ $message }}</div>
+                        @enderror
                     <input type="submit" value="投稿">
                 </form>
             </div>
