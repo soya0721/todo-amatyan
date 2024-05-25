@@ -21,10 +21,10 @@
     <main>
         <section class="welcome">
             <h1>ToDo</h1>
-            @foreach($post as $posts)
+            @foreach($posts as $post)
                 <div> 
-                    <h2>タスク:{{ $posts->title }}</h2>    
-                    <p>タスク内容:{{ $posts->body }}</p>
+                    <h2>タスク:{{ $post->title }}</h2>    
+                    <p>タスク内容:{{ $post->contents }}</p>
                 </div>
               @endforeach
         </section>

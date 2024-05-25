@@ -10,8 +10,8 @@ class PostController extends Controller
 {
     function index()
     {
-       $post = Post::all();
-       return view('posts.index', ['post' => $post]);
+       $posts = Post::all();
+       return view('posts.index', ['posts' => $posts]);
     }
 
     function create()
@@ -23,8 +23,8 @@ class PostController extends Controller
     {
          $post = new Post;
          $post -> title = $request->title;
-         $post -> body = $request->body;
-        //  $post -> img = $request->img;
+         $post -> contents = $request->body;
+         $post -> image_at = $request->image;
          $post -> user_id = Auth::id();
 
          $post -> save();
