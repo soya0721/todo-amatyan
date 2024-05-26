@@ -9,25 +9,36 @@
 </head>
 <body>
 
-    <header>
-        <nav>
-            <div  class="bg-blue-400">Amatyan</div>
-            <div>
-                <a href="">ToDo追加</a>
-                <a href="">マイページ</a>
+    <header class="bg-blue-300 p-4">
+        <nav class="flex justify-between mxauto container items-center">
+            <div class="text-4xl font-serif"><a href="{{ route('posts.index') }}">Amatyan</a></div>
+            <div class="space-x-12 font-bold">
+                <a href="" class="hover:text-green-200 transition-all durtaion-300">マイページ</a>
+                <a href="" class="hover:text-green-200 transition-all durtaion-300">ログアウト</a>
+
             </div>
         </nav>
-    </header>
+     </header>
     <main>
         <section class="welcome">
-            <h1>新規投稿</h1>
-            @foreach($posts as $post)
-                <div> 
-                    <h2>タスク:{{ $post->title }}</h2>    
-                    <p>タスク内容:{{ $post->contents }}</p>
-                    <img src="{{ asset($post->image_at) }}" >
+            <h1 class="block text-4xl font-medium text-gray-700">新規投稿</h1>
+            
+                <div class="grid grid-cols-5 gap-4 place-items-center h-56 "> 
+                    @foreach($posts as $post)
+                    <div class="border-2 border-gray-300 p-4">
+                        <img src="{{ asset($post->image_at) }}" >
+                        <h2 class="block text-2xl font-medium text-gray-700">タスク:{{ $post->title }}</h2>    
+                        <p class="block text-2xl font-medium text-gray-700">タスク内容:{{ $post->contents }}</p>
+                        <a href="#" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-block">
+                            編集
+                          </a>
+                        <a href="#" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-block">
+                            削除
+                          </a>
+                    </div>
+                    @endforeach
                 </div>
-              @endforeach
+
         </section>
     </main>
 </body>

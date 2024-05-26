@@ -22,7 +22,7 @@
         <section class="welcome">
             <div class="contact-form">
                 <h2 class="block text-2xl font-medium text-gray-700">ToDo作成</h2>
-                <form action="{{ route('posts.store') }}" method="post" class="space-y-4">
+                <form action="{{ route('posts.store') }}" method="post" class="space-y-4" enctype="multipart/form-data">
                     @csrf
                     <span class="block text-lg font-medium text-gray-700">タスク名</span>
                     <input type="text" name="title" class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
