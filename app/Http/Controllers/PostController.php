@@ -32,15 +32,24 @@ class PostController extends Controller
             'body.required' => 'タスク内容を入力してください。',         // 'body' フィールドが入力されていない場合に表示するエラーメッセージ
             'body.max' => 'タスク内容は140文字以内にしてください。'   // 'body' フィールドが140文字を超えている場合に表示するエラーメッセージ
         ]);
+        
+
+
+        if($request->hasFile('image')){
+            $filename = $request->file('image')->getClientOriginalName();
+            $imagePath = $request->file('image')
+            ->storeAs('public/images', $filename);
+        }
 
 
         $post = new Post;
         $post->title = $request->title;
         $post->contents = $request->body;
-        $post->image_at = $request->image;
+        $post->image_at = $imagePath;
         $post->user_id = Auth::id();
 
         $post->save();
-        return redirect()->route('posts.index');
-    }
+        return redirect()->route('posts.index'); 
+      }
+
 }

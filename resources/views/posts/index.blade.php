@@ -14,7 +14,7 @@
             <div class="text-4xl font-serif"><a href="{{ route('posts.index') }}">Amatyan</a></div>
             <div class="space-x-12 font-bold">
                 <a href="" class="hover:text-green-200 transition-all durtaion-300">マイページ</a>
-                <a href="" class="hover:text-green-200 transition-all durtaion-300">ログアウト</a>
+                <a href="" class="hover:text-green-200 transition-all durtaion-300">ログイン＆ログアウト</a>
 
             </div>
         </nav>
@@ -26,7 +26,7 @@
                 <div class="grid grid-cols-5 gap-4 place-items-center h-56 "> 
                     @foreach($posts as $post)
                     <div class="border-2 border-gray-300 p-4">
-                        <img src="{{ asset($post->image_at) }}" >
+                        <img src="{{ Storage::url($post->image_at) }}" >
                         <h2 class="block text-2xl font-medium text-gray-700">タスク:{{ $post->title }}</h2>    
                         <p class="block text-2xl font-medium text-gray-700">タスク内容:{{ $post->contents }}</p>
                         <a href="#" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-block">
