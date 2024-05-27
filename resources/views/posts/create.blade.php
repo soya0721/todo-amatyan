@@ -39,8 +39,6 @@
                         <span class="block text-lg font-medium text-gray-700">写真投稿</span>
                         <input type="file" name="image">
                     <input type="submit" value="投稿" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-all duration-300">
-
-
                 </form>
             </div>
         </section>
