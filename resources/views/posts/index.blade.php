@@ -38,7 +38,6 @@
                     </div>
                     @endforeach
                 </div>
-
         </section>
     </main>
 </body>
