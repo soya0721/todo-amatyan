@@ -8,10 +8,15 @@ use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
-    function index()
+    public function index(Request $request)
     {
-       $posts = Post::all();
-       return view('posts.index', ['posts' => $posts]);
+        // リクエストパラメータから並び替え順序を取得
+        $order = $request->input('order', 'desc'); // デフォルトは降順
+
+        // 投稿データを並び替え順に取得
+        $posts = Post::orderBy('created_at', $order)->get();
+
+        return view('posts.index', ['posts' => $posts, 'order' => $order]);
     }
 
     function create()
