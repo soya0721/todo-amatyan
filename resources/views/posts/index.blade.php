@@ -29,12 +29,21 @@
                         <img src="{{ Storage::url($post->image_at) }}" >
                         <h2 class="block text-2xl font-medium text-gray-700">タスク:{{ $post->title }}</h2>    
                         <p class="block text-2xl font-medium text-gray-700">タスク内容:{{ $post->contents }}</p>
-                        <a href="#" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-block">
+                        <a href="{{ route('posts.edit',$post->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-block">
                             編集
                           </a>
-                        <a href="#" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-block">
+                        {{-- <a href="{{ route('posts.destroy', $post->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-block">
                             削除
-                          </a>
+                          </a> --}}
+                          
+                        <form action="{{ route('posts.destroy', $post->id) }}" method="POST" style="display: inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded inline-block">
+                                削除
+                            </button>
+                        </form>
+
                     </div>
                     @endforeach
                 </div>

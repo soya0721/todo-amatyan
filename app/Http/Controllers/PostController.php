@@ -52,4 +52,48 @@ class PostController extends Controller
         return redirect()->route('posts.index'); 
       }
 
+      function show($id)
+      {
+        $post = Post::find($id);
+
+        
+        return view('posts.show',['post'=>$post]);
+      }
+
+      function edit($id)
+      {
+        $post = Post::find($id);
+
+        return view('posts.edit',['post'=>$post]);
+      }
+
+      function update(Request $request, $id)
+      {
+
+        if($request->hasFile('image')){
+          $filename = $request->file('image')->getClientOriginalName();
+          $imagePath = $request->file('image')
+          ->storeAs('public/images', $filename);
+        }
+
+
+        $post = Post::find($id);
+        $post -> title = $request -> title;
+        $post ->contents = $request -> body;
+        $post -> image_at = $imagePath;
+        $post -> save();
+
+        return redirect()->route('posts.index');
+      }
+
+      function destroy($id)
+      {
+        $post = Post::find($id);
+        $post -> delete();
+
+        return redirect()->route('posts.index');
+
+
+      }
+
 }
