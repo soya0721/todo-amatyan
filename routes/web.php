@@ -35,4 +35,6 @@ Route::put('/posts/{id}', [PostController::class, 'update'])->name('posts.update
 
 Route::delete('/posts/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
 
+Route::get('/products/search', [PostController::class, 'search']);
+
 // 画像追加

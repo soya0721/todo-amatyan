@@ -97,8 +97,18 @@ class PostController extends Controller
         $post -> delete();
 
         return redirect()->route('posts.index');
-
-
       }
+
+      function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        $products = Post::where('title', 'like', "$query")
+                            ->orWhere('contents', 'like', "$query")
+                            ->get();
+
+        return view('posts.search', ['products' => $products]);
+        // return redirect()->route('posts.index');
+    }
 
 }

@@ -22,6 +22,16 @@
     <main>
         <section class="welcome">
             <div class="block text-4xl font-medium text-gray-700"><a href="{{ route('posts.create') }}">新規投稿</a></div>
+
+            <form action="/products/search" method="GET">
+                <input type="text" name="query" placeholder="検索キーワードを入力">
+                <button type="submit">検索</button>
+            </form>
+            <ul>
+                @foreach($posts as $post)
+                    <li>{{ $post->name }}</li>
+                @endforeach
+            </ul>
             <div>
                 <a href="{{ route('posts.index', ['order' => 'asc']) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-block">
                     昇順
