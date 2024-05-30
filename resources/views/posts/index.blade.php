@@ -24,9 +24,9 @@
             <div class="block text-4xl font-medium text-gray-700"><a href="{{ route('posts.create') }}">新規投稿</a></div>
 
 
-            <form action="/products/search" method="GET">
-                <input type="text" name="query" placeholder="検索キーワードを入力">
-                <button type="submit">検索</button>
+            <form action="/products/search" method="GET" class="flex items-center space-x-2">
+                <input type="text" name="query" placeholder="検索キーワードを入力" class="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">検索</button>
             </form>
             <ul>
                 @foreach($posts as $post)
@@ -49,6 +49,9 @@
                         <img src="{{ Storage::url($post->image_at) }}" >
                         <h2 class="block text-2xl font-medium text-gray-700">タスク:{{ $post->title }}</h2>    
                         <p class="block text-2xl font-medium text-gray-700">タスク内容:{{ $post->contents }}</p>
+                        <a href="{{ route('posts.show',$post->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-block">
+                            コメント
+                          </a>
                         <a href="{{ route('posts.edit',$post->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-block">
                             編集
                           </a>
@@ -62,9 +65,7 @@
                             <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded inline-block">
                                 削除
                             </button>
-                            <a href="{{ route('posts.show',$post->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-block">
-                                コメント
-                              </a>
+                            
                         </form>
 
                     </div>
