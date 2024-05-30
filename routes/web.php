@@ -38,6 +38,10 @@ Route::delete('/posts/{id}', [PostController::class, 'destroy'])->name('posts.de
 
 
 
+
 Route::get('/comments/create/{post_id}',[CommentController::class,'create'])->name('comments.create');
 
 Route::post('/comments',[CommentController::class, 'store'])->name('comments.store');
+
+Route::get('/products/search', [PostController::class, 'search']);
+
