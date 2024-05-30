@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProfileController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,5 +38,11 @@ Route::put('/posts/{id}', [PostController::class, 'update'])->name('posts.update
 Route::delete('/posts/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
 
 Route::get('/products/search', [PostController::class, 'search']);
+
+Route::get('/profile', [ProfileController::class, 'myPage'])->name('profile.myPage')->middleware('auth');
+
+Route::get('/profile/edit', [ProfileController::class,'editProfile'])->name('profile.edit');
+
+Route::put('/profile/edit', [ProfileController::class,'update'])->name('profile.update');
 
 // 画像追加

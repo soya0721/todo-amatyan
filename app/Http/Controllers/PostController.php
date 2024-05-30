@@ -108,6 +108,8 @@ class PostController extends Controller
                             ->get();
 
         return view('posts.search', ['products' => $products]);
+
+        
         // return redirect()->route('posts.index');
     }
 

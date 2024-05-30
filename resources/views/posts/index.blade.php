@@ -13,8 +13,19 @@
         <nav class="flex justify-between mxauto container items-center">
             <div class="text-4xl font-serif"><a href="{{ route('posts.index') }}">Amatyan</a></div>
             <div class="space-x-12 font-bold">
-                <a href="" class="hover:text-green-200 transition-all durtaion-300">マイページ</a>
-                <a href="" class="hover:text-green-200 transition-all durtaion-300">ログイン＆ログアウト</a>
+                <a href="{{ route('profile.myPage') }}" class="hover:text-green-200 transition-all durtaion-300">マイページ</a>
+               
+                    <a class="dropdown-item hover:text-green-200 transition-all durtaion-300" href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                                     document.getElementById('logout-form').submit();">
+                        ログイン＆ログアウト
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                
+                {{-- <a href="" class="hover:text-green-200 transition-all durtaion-300">ログイン＆ログアウト</a> --}}
 
             </div>
         </nav>
