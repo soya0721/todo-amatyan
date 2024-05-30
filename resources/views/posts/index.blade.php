@@ -23,6 +23,7 @@
         <section class="welcome">
             <div class="block text-4xl font-medium text-gray-700"><a href="{{ route('posts.create') }}">新規投稿</a></div>
 
+
             <form action="/products/search" method="GET">
                 <input type="text" name="query" placeholder="検索キーワードを入力">
                 <button type="submit">検索</button>
@@ -33,12 +34,14 @@
                 @endforeach
             </ul>
             <div>
+
                 <a href="{{ route('posts.index', ['order' => 'asc']) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-block">
                     昇順
                 </a>
                 <a href="{{ route('posts.index', ['order' => 'desc']) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-block">
                     降順
                 </a>
+                
             </div>
                 <div class="grid grid-cols-5 gap-4 place-items-center h-56 "> 
                     @foreach($posts as $post)
@@ -59,6 +62,9 @@
                             <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded inline-block">
                                 削除
                             </button>
+                            <a href="{{ route('posts.show',$post->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-block">
+                                コメント
+                              </a>
                         </form>
 
                     </div>

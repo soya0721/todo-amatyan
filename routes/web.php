@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,6 +36,12 @@ Route::put('/posts/{id}', [PostController::class, 'update'])->name('posts.update
 
 Route::delete('/posts/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
 
+
+
+
+Route::get('/comments/create/{post_id}',[CommentController::class,'create'])->name('comments.create');
+
+Route::post('/comments',[CommentController::class, 'store'])->name('comments.store');
+
 Route::get('/products/search', [PostController::class, 'search']);
 
-// 画像追加
