@@ -107,7 +107,7 @@
                     <input type="password" id="password" name="password" value="{{ $user->password }}" disabled>
                 </div>
                 <input type="submit" value="Edit Profile">
-                
+
             </form>
         </div>
     </div>
