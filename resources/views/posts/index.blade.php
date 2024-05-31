@@ -13,8 +13,50 @@
         <nav class="flex justify-between mxauto container items-center">
             <div class="text-4xl font-serif"><a href="{{ route('posts.index') }}">Amatyan</a></div>
             <div class="space-x-12 font-bold">
-                <a href="" class="hover:text-green-200 transition-all durtaion-300">マイページ</a>
-                <a href="" class="hover:text-green-200 transition-all durtaion-300">ログイン＆ログアウト</a>
+                <a href="" class="hover:text-green-200 transition-all durtaion-300">
+
+
+
+
+                    <ul class="navbar-nav ms-auto">
+                        <!-- Authentication Links -->
+                        @guest
+                            @if (Route::has('login'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                </li>
+                            @endif
+
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}でログイン中
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="hover:text-green-200 transition-all durtaion-300" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+                    </ul>
+
+
+
+                </a>
+
 
             </div>
         </nav>
