@@ -2,7 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProfileController;
+
+
 use App\Http\Controllers\CommentController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,4 +48,12 @@ Route::get('/comments/create/{post_id}',[CommentController::class,'create'])->na
 Route::post('/comments',[CommentController::class, 'store'])->name('comments.store');
 
 Route::get('/products/search', [PostController::class, 'search']);
+
+Route::get('/profile', [ProfileController::class, 'myPage'])->name('profile.myPage')->middleware('auth');
+
+Route::get('/profile/edit', [ProfileController::class,'editProfile'])->name('profile.edit');
+
+Route::put('/profile/edit', [ProfileController::class,'update'])->name('profile.update');
+
+
 
