@@ -12,15 +12,14 @@
     <header class="bg-blue-300 p-4">
         <nav class="flex justify-between mxauto container items-center">
             <div class="text-4xl font-serif"><a href="{{ route('posts.index') }}">Amatyan</a></div>
-            <div class="space-x-12 font-bold">
 
-                <a href="{{ route('profile.myPage') }}" class="hover:text-green-200 transition-all durtaion-300">マイページ</a>
+
                
-                    <a class="dropdown-item hover:text-green-200 transition-all durtaion-300" href="{{ route('logout') }}"
+                    {{-- <a class="dropdown-item hover:text-green-200 transition-all durtaion-300" href="{{ route('logout') }}
                        onclick="event.preventDefault();
                                      document.getElementById('logout-form').submit();">
                         ログアウト
-                    </a>
+                    </a> --}}
 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
@@ -65,14 +64,9 @@
                                 </div>
                             </li>
                         @endguest
+                        <a href="{{ route('profile.myPage') }}" class="hover:text-green-200 transition-all durtaion-300">マイページ</a>
                     </ul>
-
-
-
                 </a>
-
-
-
             </div>
         </nav>
      </header>
